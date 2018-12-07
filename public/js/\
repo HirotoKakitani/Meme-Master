@@ -1,0 +1,24 @@
+window.onload=function(){
+    //alert("done");
+    
+    //TODO onclick of button, check if passwords match. if they don't, do not submit
+    //TODO if passwords match, submit the form
+    
+    //document.getElementById("hiro_signUp")
+};
+
+function hiro_validateForm(){    
+    var pw1 = document.getElementById("hiro_pwSignUp").value;
+    var pw2 = document.getElementById("hiro_confirmSignUp").value;
+    if (pw1 == pw2){
+        //console.log("passwords matched");
+        alert("passwords matched");
+    }
+    else{
+        //console.log("password don't match");
+        alert("password don't match");
+    }
+    return 0;
+};
+
+
