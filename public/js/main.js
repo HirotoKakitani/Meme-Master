@@ -8,7 +8,6 @@ firebase.auth().onAuthStateChanged(function(user){
     }
     else{
         console.log ("nobody logged in");
-        //TODO redirect to unavailable page
         window.location="index.html";
     }
 });
@@ -30,6 +29,12 @@ window.onload = function(){
             console.log(`${error.code}: ${error.message}`);
         });
     });
+
+    setTimeout(wrapper_load, 1000); //need to wait for auth to finish before wrapper_load
+    
 };
 
+function wrapper_load(){
+    hiro_loadPreview(firebase.auth().currentUser.uid);
+}
 

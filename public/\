@@ -11,6 +11,7 @@ firebase.auth().onAuthStateChanged(function(user){
     }
 });
 
+
 window.onload=function(){
     var canvas = document.getElementById("hiro_Canvas");
     var upImg = new Image();
@@ -37,7 +38,7 @@ window.onload=function(){
 
 
     //fill fields if editting existing meme
-    setTimeout(fillEditor,500);
+    setTimeout(fillTexts,500);
     
     //handles uploading images/ memes
     document.getElementById("hiro_picUpload").addEventListener("change", function(e){
@@ -54,8 +55,8 @@ window.onload=function(){
 
     document.getElementById("hiro_topText").onkeyup=function(){
         topVal = this.value;
-        console.log(topVal);
-    };
+            console.log(topVal);
+        };
     //update text when focus is out of the text box
     document.getElementById("hiro_topText").addEventListener("focusout", function(){
         console.log(topVal)
@@ -64,10 +65,13 @@ window.onload=function(){
         context.drawImage(upImg,0,0, canvas.width, canvas.height); //place in coord 0,0 and fit the dimenetions canvas.width x canvas.height
         writeTop();
         writeBottom(); 
+    
+        //writeTop(context, topVal);
+        //writeBottom(context, bottomVal); 
     });
     document.getElementById("hiro_bottomText").onkeyup=function(){
         bottomVal = this.value;
-        console.log(bottomVal);
+            console.log(bottomVal);
     };
     //update text when focus is out of the text box
     document.getElementById("hiro_bottomText").addEventListener("focusout", function(){
@@ -89,11 +93,9 @@ window.onload=function(){
         });
     });
     
-    //deletes meme
+    //TODO just redirect to main page for now, need to implement meme deletion
     document.getElementById("hiro_deleteMeme").addEventListener("click", function(){
-        var delUserId = firebase.auth().currentUser.uid;
-        var delName = document.getElementById("hiro_title").value;
-        hiro_deleteMeme(delUserId, delName, function(){window.location="main.html"});
+        window.location = "main.html";
     });
      
     document.getElementById("hiro_saveMeme").addEventListener("click", function(){
@@ -102,40 +104,28 @@ window.onload=function(){
         var topText = document.getElementById("hiro_topText").value;
         var botText = document.getElementById("hiro_bottomText").value;
         var memeFlat = JSON.stringify(canvas.toDataURL());
-        var memeRaw = upImg.src;
+        var memeRaw = 1;
         hiro_saveImage(userId,memeFlat,memeName,topText,botText,memeRaw);
     }); 
-
-
-    //function to fill in input values when coming from 
-    function fillEditor(){
-        var prev = sessionStorage.getItem("linkFrom");
-        var dataRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid+"/"+prev);
-        if (prev){
-            dataRef.once("value").then(function(snapshot){
-                //fill canvas and text fields
-                var fillTop = snapshot.child("top_text").val();
-                var fillBot = snapshot.child("bot_text").val();
-                upImg = new Image();
-                upImg.src = snapshot.child("raw_img").val();
-                upImg.onload= function(){
-                    context.drawImage(upImg,0,0,canvas.width,canvas.height); 
-                    topVal = fillTop;
-                    bottomVal = fillBot;
-                    writeTop();
-                    writeBottom();
-                };
-                                 
-                document.getElementById("hiro_title").value=snapshot.child("meme_name").val();
-                document.getElementById("hiro_topText").value=fillTop;
-                document.getElementById("hiro_bottomText").value=fillBot;
-            });
-            sessionStorage.clear();
-        }
-        else{
-            console.log("new meme");
-        }
-    };
 };
 
-
+//function to fill in input values when coming from 
+function fillTexts(){
+    var prev = sessionStorage.getItem("linkFrom");
+    var dataRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid+"/"+prev);
+    if (prev){
+        dataRef.once("value").then(function(snapshot){
+            var fillTitle = document.getElementById("hiro_title").value;
+            fillTitle.value=snapshot.child("meme_name").val();
+            var fillTop = document.getElementById("hiro_topText").value;
+            fillTop.value=snapshot.child("top_text").val();
+            var fillBot = document.getElementById("hiro_bottomText").value;
+            fillBot.value=snapshot.child("bot_text").val();
+        });
+        sessionStorage.clear();
+    }
+    
+    else{
+        console.log("new meme");
+    }
+};

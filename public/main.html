@@ -1,20 +1,25 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>help me</title>
+        <title>Meme Master</title>
         <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script> 
         <script src="js/account.js" type="text/javascript"></script>
+        <script src="js/database.js" type="text/javascript"></script>
         <script src="js/main.js" type="text/javascript"></script>
         <noscript>Your browser does not support JavaScript!</noscript>
+        <link rel="stylesheet" href="css/style.css" type="text/css"></link>
+ 
     </head>
     <body>
         <!--user info-->
         <div>
             <!--avatar and email address-->
-            <a id="hiro_emailLink" href="main.html"></a>
+            <a id="hiro_emailLink" href="accountSettings.html"></a>
             <button id = "hiro_logOut">Log out</button>
         </div>
-        <h1>help me</h1>
+        <h1>Meme Master</h1>
         <button id="hiro_newMeme">New</button>
+        <div id="hiro_memeContainer"> 
+        </div>
     </body>
 </html>
