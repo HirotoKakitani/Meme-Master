@@ -10,8 +10,7 @@ firebase.auth().onAuthStateChanged(function(user){
 
 window.onload=function(){
     console.log("account initialization done");
-    //TODO on form submit, get info from text inputs, sign into account
-    //document.getElementById("hiro_submitSignIn").addEventListener("click",function(){
+    //on form submit, get info from text inputs, sign into account
     document.getElementById("hiro_submitSignIn").addEventListener("click",function(){
         var userEmail = document.getElementById("hiro_emailSignIn").value;
         var userPW = document.getElementById("hiro_pwSignIn").value;
@@ -19,7 +18,6 @@ window.onload=function(){
             console.log(`${error.code}: ${error.message}`);
         });
         console.log("successful login");
-        //TODO update database with user's info. redirect to homepage on successful login. Prompt again if unsuccessful signin 
     });
 };
 

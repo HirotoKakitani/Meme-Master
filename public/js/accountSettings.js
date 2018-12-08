@@ -1,7 +1,6 @@
 hiro_accountInit(hiro_accountConfig);
 
 window.onload = function(){
-
     document.getElementById("hiro_submitChange").addEventListener("click", function(){
         var pw1 = document.getElementById("hiro_newPw").value;
         var pw2 = document.getElementById("hiro_newPwConfirm").value;

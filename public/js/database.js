@@ -70,6 +70,7 @@ function hiro_loadPreview(userId){
         snapshot.forEach(function(childSnapshot){
             var imgNode = document.createElement("img");
             var titleNode = document.createElement("p");
+            var lineNode = document.createElement("hr");
             imgNode.src = JSON.parse(childSnapshot.child("meme").val());
             imgNode.id = childSnapshot.child("meme_name").val();
             imgNode.onclick=function(){
@@ -77,8 +78,9 @@ function hiro_loadPreview(userId){
                 window.location="editor.html";
             };
             titleNode.innerHTML = childSnapshot.child("meme_name").val();
-            canvasContainer.appendChild(imgNode);
             canvasContainer.appendChild(titleNode);
+            canvasContainer.appendChild(imgNode);
+            canvasContainer.appendChild(lineNode);
              
         });
     });

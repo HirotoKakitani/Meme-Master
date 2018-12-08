@@ -1,4 +1,6 @@
 hiro_accountInit(hiro_accountConfig);
+
+//checks user status. redirects to login screen if not logged in
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
         console.log ("logged in");
@@ -19,20 +21,17 @@ window.onload=function(){
     var bottomVal="";  //default text for bottom text
    
     //set up canvas 
-    context.font="bold 20px Impact";
-    context.strokeStyle="black";
-    context.fillStyle='white';
-    context.font="bold 20px Impact";
+    context.font="700 20px Impact";
     context.strokeStyle="black";
     context.fillStyle='white';
     context.textAlign="center";
     function writeTop(){
-        context.strokeText(topVal,canvas.width/2,20);
-        context.fillText(topVal,canvas.width/2,20);   
+        context.strokeText(topVal.toUpperCase(),canvas.width/2,20);
+        context.fillText(topVal.toUpperCase(),canvas.width/2,20);   
     };
     function writeBottom(){
-        context.strokeText(bottomVal,canvas.width/2,canvas.height-20);
-        context.fillText(bottomVal,canvas.width/2, canvas.height-20); 
+        context.strokeText(bottomVal.toUpperCase(),canvas.width/2,canvas.height-20);
+        context.fillText(bottomVal.toUpperCase(),canvas.width/2, canvas.height-20); 
     };
 
 

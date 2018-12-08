@@ -1,4 +1,6 @@
 hiro_accountInit(hiro_accountConfig);
+
+//checks user status. redirects to login screen if not logged in
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
         console.log ("logged in");
@@ -34,6 +36,9 @@ window.onload = function(){
     
 };
 
+/*
+ * loads all of the previews for saved memes onto the main page
+ */
 function wrapper_load(){
     hiro_loadPreview(firebase.auth().currentUser.uid);
 }

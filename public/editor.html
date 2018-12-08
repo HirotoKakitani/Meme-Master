@@ -11,23 +11,26 @@
     </head>
     <body>
         <!--user info-->
-        <div class="hiro_accountHeader">
-            <!--avatar-->
+        <div class="hiro_header">
             <a id="hiro_emailLink" href="accountSettings.html"></a>
             <button id ="hiro_logOut">Log Out</button>
         </div>
-        <canvas id="hiro_Canvas" width="300" height="300">
-            Canvas is not supported by your browser!
-        </canvas> 
-        <input type="file" id="hiro_picUpload">
-        <div id="hiro_editorText">
-            <input id ="hiro_title" type="text" placeholder="Meme Title"><br>
-            <input id="hiro_topText" type="text" placeholder="Top Text"><br>
-            <input id="hiro_bottomText" type="text" placeholder="Bottom Text"><br>
+        <div id="hiro_editorContent">
+            <div id="hiro_editCanvas">
+                <canvas id="hiro_Canvas" width="300" height="300">
+                    Canvas is not supported by your browser!
+                </canvas> 
+                <input type="file" id="hiro_picUpload">
+            </div>
+            <div id="hiro_editorCont">
+                <div id="hiro_editorText">
+                    <input id ="hiro_title" type="text" placeholder="Meme Title"><br>
+                    <input id="hiro_topText" type="text" placeholder="Top Text"><br>
+                    <input id="hiro_bottomText" type="text" placeholder="Bottom Text"><br>
+                </div>
+                <button id="hiro_deleteMeme">Delete</button>
+                <button id="hiro_saveMeme">Save</button>
+            </div>
         </div>
-        <button id="hiro_deleteMeme">Delete</button>
-        <button id="hiro_saveMeme">Save</button>
-        
-
     </body>
 </html>

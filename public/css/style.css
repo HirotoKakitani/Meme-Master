@@ -1,3 +1,59 @@
-#hiro_Canvas{
+canvas{
     border:1px solid black;
+}
+
+h1{
+    text-align:center;
+}
+
+h2{
+    text-align:center;
+}
+
+.hiro_accForm{
+    text-align:center;
+}
+
+#hiro_signInCont{
+    text-align:center;
+}
+
+.hiro_header{
+    float:right;
+}
+#hiro_newMeme{
+    cursor: pointer;
+    background-color: cyan;
+    color: black;
+    border: solid 1px;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    float:left;
+}
+#hiro_memeContainer{
+    text-align:center;
+    margin: 0 auto;
+}
+
+#hiro_picUpload{
+    display:block;
+}
+
+#hiro_editorCont{
+    display:inline-block;
+    text-align:center;
+    margin: 0 auto;
+}
+#hiro_Canvas{
+    display:block;
+}
+
+#hiro_editCanvas{
+    display:inline-block;
+}
+
+#hiro_editorContent{
+    text-align:center;
 }

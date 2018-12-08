@@ -14,8 +14,7 @@ window.onload=function(){
         var pw1 = document.getElementById("hiro_pwSignUp").value;
         var pw2 = document.getElementById("hiro_confirmSignUp").value;
         if (pw1 == pw2){
-            //console.log("passwords matched");
-            alert("passwords matched");
+            console.log("passwords matched");
             var newUser = document.getElementById("hiro_emailSignUp").value;
             var newPW = document.getElementById("hiro_pwSignUp").value;
             firebase.auth().createUserWithEmailAndPassword(newUser, newPW).catch(function(error){
